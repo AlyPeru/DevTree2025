@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist", //donde se va a compilar el proyecto
+        "rootDir": "./src", //csrpeta principal donde esta nuestro codigo 
+        "lib":["ESNext"],// lista de bibliotecas de js pata Typejs
+        "target": "ESNext",//utiliza lo mas nuevo de js y compilalo en ese nueva version tambien 
+        "moduleResolution" : "NodeNext", // es la formula en como se van a compilar los modulos
+        "module" : "NodeNext",
+        "strict" : false,//modo estricto de Typejs
+        "sourceMap": true,// este es el origen de typejs para que lo genere
+        "esModuleInterop": true,//para usarli breria que no usa modulo
+        "declaration": true, //referencia dela extencion de archivo que se necesite porque cuando se compila se pierden los tipos
+    },
+    "include": ["src/**/*.ts"] // que archivos quieres incluir en la compilacion 
+}
+
+//este es el archivo de configuracion de express para que lo soporte Typescrip
+//importante recuerda eliminar la lines  "type": "module"(del package.json),
