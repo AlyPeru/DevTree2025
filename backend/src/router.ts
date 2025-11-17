@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {body} from "express-validator"
-import { createAccount, login } from "./handlers/index";
+import { createAccount, getUser, login } from "./handlers/index";
 import { handleInputErrors } from "./middleware/validation";
+import { authebticate } from "./middleware/auth";
 const router = Router();
 
 /*Auth Registro*/ 
@@ -31,4 +32,5 @@ router.post('/auth/login',
         .withMessage("El password no puede ir vacio"),
     login)
 
+router.get('/user',authebticate, getUser )
 export default router

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import ErrorMessage from "../components/ErrorMessage"
 import type { LoginForm } from "../types"
 import api from "../config/axios"
-import { toast } from "sonner"
 import { isAxiosError } from "axios"
 
 export default function LoginView() {
@@ -17,7 +17,7 @@ export default function LoginView() {
     const handleLogin= async (formData : LoginForm)=>{
         try {
             const {data} = await api.post(`/auth/login`, formData)
-            toast.success(data)
+            localStorage.setItem('AUTH_TOKEN', data)
             reset()
         } catch (error) {
             if(isAxiosError(error) && error.response){
