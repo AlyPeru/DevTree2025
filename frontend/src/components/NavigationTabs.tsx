@@ -29,7 +29,7 @@ export default function NavigationTabs() {
                     name="tabs"
                     className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                     onChange={ handleChange }
-                >
+                >//para Mobil
                     {tabs.map((tab) => (
                         <option 
                             value={tab.href}
@@ -42,6 +42,7 @@ export default function NavigationTabs() {
             <div className="hidden sm:block">
                 <div className="border-b border-gray-200">
                     <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+                //para Desktop
                         {tabs.map((tab) => (
                             <Link
                                 key={tab.name}

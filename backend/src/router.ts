@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {body} from "express-validator"
-import { createAccount, getUser, login } from "./handlers/index";
+import { createAccount, getUser, login, updateProfile , uploadImage} from "./handlers/index";
 import { handleInputErrors } from "./middleware/validation";
-import { authebticate } from "./middleware/auth";
+import { authenticate } from "./middleware/auth";
 const router = Router();
 
 /*Auth Registro*/ 
@@ -22,7 +22,6 @@ router.post('/auth/register',
         .withMessage("El password es muy corto minimo 8 caracteres"),
     handleInputErrors,
     createAccount)
-
 router.post('/auth/login', 
     body('email')
         .isEmail()
@@ -32,5 +31,18 @@ router.post('/auth/login',
         .withMessage("El password no puede ir vacio"),
     login)
 
-router.get('/user',authebticate, getUser )
+router.get('/user', authenticate, getUser )
+router.patch('/user', 
+    body('handle')
+        .notEmpty()
+        .withMessage("El handle no puede ir vacio"),
+    body('description')
+        .notEmpty()
+        .withMessage("La descripcion no puede ir vacia"),
+    handleInputErrors,    
+    authenticate, 
+    updateProfile)
+
+router.post('/user/image', authenticate, uploadImage)
+
 export default router

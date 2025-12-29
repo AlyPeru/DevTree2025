@@ -16,8 +16,8 @@ export default function Router(){
                     <Route path="/auth/login" element={<LoginView/>} />
                     <Route path="/auth/register" element={<RegisterView/>} />
                 </Route>
-                <Route path="/admin" element={<AppLayout />}>
-                <Route index = {true} element={<LinkTreeView/>}/>
+                <Route path="/admin" element={<AppLayout />}> //si quieres que laguno de los hijo tenga esta ruta adminse usa path="/admin"
+                <Route index = {true} element={<LinkTreeView/>}/>// y el index es para que sea la ruta por defecto la del padre
                 <Route path="profile" element={<ProfileView/>}/>
                 </Route>
             </Routes>
